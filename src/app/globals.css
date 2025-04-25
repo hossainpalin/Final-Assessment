@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root,
+html,
+body {
+  height: 100%;
+}
+
+@layer components {
+  /* Product input div*/
+  .product-input-div {
+    @apply flex flex-col gap-2;
+  }
+}
