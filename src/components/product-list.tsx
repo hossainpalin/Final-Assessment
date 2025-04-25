@@ -119,6 +119,12 @@ export default function ProductList({
             <p>Status: {product.status}</p>
           </div>
         ))}
+
+        {products?.message && (
+          <div className="col-span-5 text-center text-gray-500">
+            {products.message}
+          </div>
+        )}
       </div>
 
       {/* Pagination */}
