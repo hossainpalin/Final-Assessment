@@ -15,23 +15,24 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // const paginatedData = paginate(request, data) as any;
-    // if (paginatedData?.data?.length > 0) {
-    //   data = paginatedData;
-    // }
+    // Apply searching
+    data = searching(request, data) as any;
 
-    // Sorting and Paginate data
-    if (products.length > 0) {
-      data = sorting(request, products) as any;
-      data = searching(request, products) as any;
+    // Apply sorting
+    data = sorting(request, data) as any;
 
-      const paginatedData = paginate(request, data) as any;
-      if (paginatedData?.data?.length > 0) {
-        return NextResponse.json(paginatedData, { status: 200 });
-      }
+    // Apply pagination
+    const paginatedData = paginate(request, data) as any;
+
+    // Return paginated data
+    if (paginatedData?.data?.length > 0) {
+      return NextResponse.json(paginatedData, { status: 200 });
+    } else {
+      return NextResponse.json(
+        { message: "No products found after applying filters" },
+        { status: 404 }
+      );
     }
-
-    return NextResponse.json(data, { status: 200 });
   } catch (error) {
     console.error("Error fetching product list:", error);
     return NextResponse.json(

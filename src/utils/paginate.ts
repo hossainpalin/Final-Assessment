@@ -20,10 +20,6 @@ export function paginate(request: NextRequest, data: any) {
     const page = Number(request?.nextUrl?.searchParams.get("page")) || 1;
     const limit = 20;
 
-    if (!page) {
-      return data;
-    }
-
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
 

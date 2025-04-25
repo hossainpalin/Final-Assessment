@@ -33,8 +33,6 @@ export default function ProductList({
     placeholderData: (previousData) => previousData,
   });
 
-  console.log(products);
-
   // update URL search params
   useEffect(() => {
     const params = new URLSearchParams();

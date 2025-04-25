@@ -17,7 +17,7 @@ export default async function Page({
   const query = await searchParams;
 
   const page = Number(query.page) || 1;
-  const sortBy = query.sortBy || "id";
+  const sortBy = query.sort_by || "id";
   const orderBy = query.orderBy || "asc";
   const search = query.search || "";
 

@@ -10,10 +10,3 @@ html,
 body {
   height: 100%;
 }
-
-@layer components {
-  /* Product input div*/
-  .product-input-div {
-    @apply flex flex-col gap-2;
-  }
-}
