@@ -2,12 +2,14 @@ import { NextRequest } from "next/server";
 
 export function sorting(request: NextRequest, data: any) {
   try {
-    const sortBy = request?.nextUrl?.searchParams.get("sortBy");
-    const orderBy = request?.nextUrl?.searchParams.get("orderBy");
+    const sortBy = request?.nextUrl?.searchParams.get("sort_by");
+    const orderBy = request?.nextUrl?.searchParams.get("order");
 
     if (!sortBy || !orderBy) {
       return data;
     }
+
+    console.log("Sorting data by", sortBy, orderBy);
 
     return data.sort((a: any, b: any) => {
       if (orderBy === "asc") {
