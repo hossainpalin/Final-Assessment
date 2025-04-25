@@ -12,7 +12,7 @@ export async function fetchProducts({
   search,
 }: IFetchingProducts) {
   const response = await fetch(
-    `http://localhost:3000/api/product-list?page=${page}&sort_by=${sortBy}&order=${orderBy}&search=${search}`
+    `https://final-assessment-mu.vercel.app/api/product-list?page=${page}&sort_by=${sortBy}&order=${orderBy}&search=${search}`
   );
 
   return await response.json();
