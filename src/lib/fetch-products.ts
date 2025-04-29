@@ -1,18 +1,26 @@
 interface IFetchingProducts {
-  page?: number;
-  sortBy?: string | string[];
-  orderBy?: "asc" | "desc" | string | string[];
-  search?: string | string[];
+  currentPage: number;
+  sortBy: string;
+  orderBy: "asc" | "desc" | string;
+  term?: string;
 }
 
 export async function fetchProducts({
-  page,
+  currentPage,
   sortBy,
   orderBy,
-  search,
+  term,
 }: IFetchingProducts) {
+  let query;
+
+  if (term) {
+    query = `?search=${term}&page=${currentPage}&sort_by=${sortBy}&order=${orderBy}`;
+  } else {
+    query = `?page=${currentPage}&sort_by=${sortBy}&order=${orderBy}`;
+  }
+
   const response = await fetch(
-    `https://final-assessment-mu.vercel.app/api/product-list?page=${page}&sort_by=${sortBy}&order=${orderBy}&search=${search}`
+    `https://laravelpoint.com/api/ProductList${query}`,
   );
 
   return await response.json();
